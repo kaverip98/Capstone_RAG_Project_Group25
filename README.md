@@ -43,7 +43,8 @@ References:
 1) RAGBench: Explainable Benchmark for Retrieval-Augmented Generation Systems
 2) Searching for Best Practices in Retrieval-Augmented Generation,
 
-Tools: Transformers, Hugging Face, PyTorch, Langchain, LlamaIndex
+
+
 
 
 Task 2:
@@ -82,6 +83,20 @@ EVALUATION METRICS:
 
 LLM Abilities Evaluation
 Additionally, evaluation will draw upon the fundamental abilities defined in the RGB benchmark and their corresponding metrics:
+
+•	Accuracy: {Noise Robustness, Information Integration}
+o	Uses exact matching approach: If the generated text contains an exact match of the answer, it is considered as a correct answer
+
+●	Rejection Rate: {Negative Rejection}
+o	LLM should output the specific content “I can not answer the question because of insufficient information in documents” (we use instruction to inform the model)
+o	If the model generates this content, it indicates a successful rejection
+
+●	Error Detection Rate: {Counterfactual Robustness}
+o	LLM should output the specific content “There are factual errors in the provided documents” (we use instruction to inform the model)
+If the model generates this content, it indicates the model has detected erroneous information in document
+
+●	Error Correction Rate: If the model generates correct answer then it is capable of correcting errors in documents
+
 
 References
 ● Research Paper: Benchmarking Large Language Models in Retrieval-Augmented
