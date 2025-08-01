@@ -1,5 +1,5 @@
 # RAG_Capstone_Project_Group25
-
+Task 1:
 Objective:
 Develop an efficient Retrieval-Augmented Generation (RAG) pipeline capable of delivering
 accurate answers to the user queries.
@@ -44,3 +44,58 @@ References:
 2) Searching for Best Practices in Retrieval-Augmented Generation,
 
 Tools: Transformers, Hugging Face, PyTorch, Langchain, LlamaIndex
+
+
+Task 2:
+Benchmarking Large Language Models in Retrieval-Augmented
+Generation
+Task
+Analyze the performance of LLMs in 4 fundamental abilities required for RAG
+1. Noise Robustness
+2. Negative Rejection
+3. Information Integration
+4. Counterfactual Robustness
+Abilities of LLM for RAG
+1. Noise Robustness: Ability of an LLM to extract the useful information in the presence of
+noisy documents
+2. Negative Rejection: Ability of an LLM to reject answering the question when required
+knowledge is not present in any of the retrieved documents
+3. Information Integration: Ability of an LLM to integrate information present in multiple
+documents to answer complex questions
+4. Counterfactual Robustness: Evaluates whether LLMs can identify risks of known
+factual errors in the retrieved documents and generates correct answer using its
+pretrained knowledge
+
+Dataset
+RGB contains 600 base questions, and 200 additional questions for the information integration
+ability and 200 additional questions for counterfactual robustness ability. Half of the instances
+are in English, and the other half are in Chinese.
+Language Noise Robustness
+Negative Rejection
+Information
+Integration
+Counterfactual
+Robustness
+English 300 100 100
+Chinese 300 100 100
+For Negative Rejection, all external documents are sampled from negative documents in Noise
+Robustness testbed.
+Evaluation Metrics
+● Accuracy: {Noise Robustness, Information Integration}
+○ Uses exact matching approach: If the generated text contains an exact match of
+the answer, it is considered as a correct answer
+● Rejection Rate: {Negative Rejection}
+○ LLM should output the specific content “I can not answer the question because of
+insufficient information in documents” (we use instruction to inform the model)
+○ If the model generates this content, it indicates a successful rejection
+● Error Detection Rate: {Counterfactual Robustness}
+○ LLM should output the specific content “There are factual errors in the provided
+documents” (we use instruction to inform the model
+○ If the model generates this content, it indicates the model has detected
+erroneous information in document
+● Error Correction Rate: If the model generates correct answer then it is capable of
+correcting errors in documents
+References
+● Research Paper: Benchmarking Large Language Models in Retrieval-Augmented
+Generation
+● Code and Data: https://github.com/chen700564/RGB
