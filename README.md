@@ -47,14 +47,14 @@ Tools: Transformers, Hugging Face, PyTorch, Langchain, LlamaIndex
 
 
 Task 2:
-Benchmarking Large Language Models in Retrieval-Augmented
-Generation
-Task
+Benchmarking Large Language Models in Retrieval-Augmented Generation
+
 Analyze the performance of LLMs in 4 fundamental abilities required for RAG
 1. Noise Robustness
 2. Negative Rejection
 3. Information Integration
 4. Counterfactual Robustness
+   
 Abilities of LLM for RAG
 1. Noise Robustness: Ability of an LLM to extract the useful information in the presence of
 noisy documents
@@ -66,35 +66,23 @@ documents to answer complex questions
 factual errors in the retrieved documents and generates correct answer using its
 pretrained knowledge
 
-Dataset
-RGB contains 600 base questions, and 200 additional questions for the information integration
-ability and 200 additional questions for counterfactual robustness ability. Half of the instances
-are in English, and the other half are in Chinese.
-Language Noise Robustness
-Negative Rejection
-Information
-Integration
-Counterfactual
-Robustness
-English 300 100 100
-Chinese 300 100 100
-For Negative Rejection, all external documents are sampled from negative documents in Noise
-Robustness testbed.
-Evaluation Metrics
-● Accuracy: {Noise Robustness, Information Integration}
-○ Uses exact matching approach: If the generated text contains an exact match of
-the answer, it is considered as a correct answer
-● Rejection Rate: {Negative Rejection}
-○ LLM should output the specific content “I can not answer the question because of
-insufficient information in documents” (we use instruction to inform the model)
-○ If the model generates this content, it indicates a successful rejection
-● Error Detection Rate: {Counterfactual Robustness}
-○ LLM should output the specific content “There are factual errors in the provided
-documents” (we use instruction to inform the model
-○ If the model generates this content, it indicates the model has detected
-erroneous information in document
-● Error Correction Rate: If the model generates correct answer then it is capable of
-correcting errors in documents
+Dataset Description:
+
+RGB Benchmark
+Retrieval-Augmented Generation Benchmark (RGB): This corpus was specifically established for evaluating RAG systems in both English and Chinese.
+RGB contains 600 base questions, and 200 additional questions for the information integration ability and 200 additional questions for counterfactual robustness ability. Half of the instances are in English, and the other half are in Chinese.
+
+Language	Noise Robustness Negative Rejection	Information Integration	Counterfactual Robustness
+English	300	100	100
+Chinese	300	100	100
+
+For Negative Rejection, all external documents are sampled from negative documents in Noise Robustness testbed.
+
+EVALUATION METRICS:
+
+LLM Abilities Evaluation
+Additionally, evaluation will draw upon the fundamental abilities defined in the RGB benchmark and their corresponding metrics:
+
 References
 ● Research Paper: Benchmarking Large Language Models in Retrieval-Augmented
 Generation
